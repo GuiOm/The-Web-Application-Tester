@@ -1,0 +1,3 @@
+The Web Application Tester (TWAT) is a web vulnerability scanner.
+TWAT is written in Python.
+It includes 2 modules : a blackbox module and a whitebox module.

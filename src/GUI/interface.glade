@@ -3,6 +3,8 @@
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
   <object class="GtkWindow" id="window1">
+    <property name="width_request">750</property>
+    <property name="height_request">600</property>
     <property name="visible">True</property>
     <property name="title" translatable="yes">The Web Application Tester</property>
     <property name="window_position">center</property>
@@ -100,10 +102,12 @@
         </child>
         <child>
           <object class="GtkLabel" id="label1">
+            <property name="height_request">20</property>
             <property name="visible">True</property>
             <property name="label" translatable="yes">Choisissez un fichier ou entrez une URL</property>
           </object>
           <packing>
+            <property name="expand">False</property>
             <property name="position">1</property>
           </packing>
         </child>
@@ -111,11 +115,21 @@
           <object class="GtkHBox" id="hbox1">
             <property name="visible">True</property>
             <child>
+              <object class="GtkLabel" id="label7">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Fichier :</property>
+              </object>
+              <packing>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkFileChooserButton" id="filechooserbutton1">
                 <property name="visible">True</property>
               </object>
               <packing>
-                <property name="position">0</property>
+                <property name="expand">False</property>
+                <property name="position">1</property>
               </packing>
             </child>
             <child>
@@ -124,7 +138,7 @@
                 <property name="label" translatable="yes">URL :</property>
               </object>
               <packing>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
             <child>
@@ -135,11 +149,12 @@
                 <property name="text" translatable="yes">Entrez une URL</property>
               </object>
               <packing>
-                <property name="position">2</property>
+                <property name="position">3</property>
               </packing>
             </child>
           </object>
           <packing>
+            <property name="expand">False</property>
             <property name="position">2</property>
           </packing>
         </child>
@@ -148,6 +163,7 @@
             <property name="visible">True</property>
             <child>
               <object class="GtkLabel" id="label2">
+                <property name="height_request">50</property>
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">label</property>
               </object>
@@ -157,6 +173,7 @@
             </child>
             <child>
               <object class="GtkLabel" id="label3">
+                <property name="height_request">50</property>
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">label</property>
               </object>
@@ -166,16 +183,19 @@
             </child>
           </object>
           <packing>
+            <property name="expand">False</property>
             <property name="position">3</property>
           </packing>
         </child>
         <child>
           <object class="GtkHBox" id="hbox3">
             <property name="visible">True</property>
+            <property name="homogeneous">True</property>
             <child>
               <object class="GtkLabel" id="label5">
+                <property name="height_request">50</property>
                 <property name="visible">True</property>
-                <property name="label" translatable="yes">Options</property>
+                <property name="label" translatable="yes">Options :</property>
               </object>
               <packing>
                 <property name="position">0</property>
@@ -184,6 +204,7 @@
             <child>
               <object class="GtkCheckButton" id="checkbutton1">
                 <property name="label" translatable="yes">ALL</property>
+                <property name="height_request">50</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
@@ -196,6 +217,7 @@
             <child>
               <object class="GtkCheckButton" id="checkbutton2">
                 <property name="label" translatable="yes">XSS</property>
+                <property name="height_request">50</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
@@ -208,6 +230,7 @@
             <child>
               <object class="GtkCheckButton" id="checkbutton3">
                 <property name="label" translatable="yes">Injection SQL</property>
+                <property name="height_request">50</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
@@ -220,6 +243,7 @@
             <child>
               <object class="GtkCheckButton" id="checkbutton4">
                 <property name="label" translatable="yes">LFI</property>
+                <property name="height_request">50</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
@@ -232,6 +256,7 @@
             <child>
               <object class="GtkCheckButton" id="checkbutton5">
                 <property name="label" translatable="yes">POST</property>
+                <property name="height_request">50</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
@@ -244,32 +269,49 @@
             <child>
               <object class="GtkButton" id="button1">
                 <property name="label" translatable="yes">Start !</property>
+                <property name="height_request">50</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
               </object>
               <packing>
+                <property name="expand">False</property>
                 <property name="position">6</property>
               </packing>
             </child>
           </object>
           <packing>
+            <property name="expand">False</property>
             <property name="position">4</property>
           </packing>
         </child>
         <child>
           <object class="GtkLabel" id="label6">
+            <property name="height_request">50</property>
             <property name="visible">True</property>
             <property name="label" translatable="yes">Informations :</property>
           </object>
           <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
             <property name="position">5</property>
           </packing>
         </child>
         <child>
-          <object class="GtkTextView" id="textview1">
+          <object class="GtkScrolledWindow" id="scrolledwindow1">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="hscrollbar_policy">automatic</property>
+            <property name="vscrollbar_policy">automatic</property>
+            <child>
+              <object class="GtkTextView" id="textview1">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="editable">False</property>
+                <property name="wrap_mode">word</property>
+                <property name="cursor_visible">False</property>
+              </object>
+            </child>
           </object>
           <packing>
             <property name="position">6</property>

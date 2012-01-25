@@ -4,9 +4,7 @@
 import sys
 from GUI.FenetrePrincipale import *
 
-class TWAT:
-	
-	
+class TWAT:	
 	
 	#Test le format de l'URL passé en argument
 	def testFormatURL(self, url):
@@ -24,5 +22,7 @@ if __name__ == '__main__':
 	try:
 		fenetreP = FenetrePrincipale()
 		gtk.main()
+		texte = "TEST"
+		fenetreP.affichageTest(texte)
 	except KeyboardInterrupt:
 		pass
