@@ -37,11 +37,13 @@ class FenetrePrincipale:
 		info = self.builder.get_object("textview1")
 		buffertexte = info.get_buffer()
 		buffertexte.set_text(text)
-		
+	
+	#Modifie le label en dessous du choix de l'URL à tester	
 	def setMessageLabelURL(self, text):
 		label = self.builder.get_object("label3")
 		label.set_text(text)
-		
+	
+	#Modifie le label en dessous du sélecteur de fichier	
 	def setMessageLabelFile(self, text):
 		label = self.builder.get_object("label2")
 		label.set_text(text)
@@ -66,9 +68,11 @@ class FenetrePrincipale:
 			
 		return options
 		
-	#Retourne le fichier choisi par l'utilisateur
-	def getFile(self):
-		pass
+	#Retourne le chemin du fichier choisi par l'utilisateur
+	def getPathToFile(self):
+		fichier = self.builder.get_object("filechooserbutton1")
+		nomFichier = fichier.get_filename()
+		return nomFichier
 		
 	#Retourne l'URL entrée par l'utilisateur
 	def getURL(self):

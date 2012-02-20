@@ -76,6 +76,27 @@
               </object>
             </child>
             <child>
+              <object class="GtkMenuItem" id="menuitem2">
+                <property name="visible">True</property>
+                <property name="label" translatable="yes">Options</property>
+                <property name="use_underline">True</property>
+                <child type="submenu">
+                  <object class="GtkMenu" id="menu2">
+                    <property name="visible">True</property>
+                    <child>
+                      <object class="GtkImageMenuItem" id="imagemenuitem6">
+                        <property name="label">D&#xE9;sactiver test ping</property>
+                        <property name="visible">True</property>
+                        <property name="image">image1</property>
+                        <property name="use_stock">False</property>
+                        <signal name="activate" handler="on_imagemenuitem6_activate"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
               <object class="GtkMenuItem" id="menuitem4">
                 <property name="visible">True</property>
                 <property name="label" translatable="yes">Aid_e</property>
@@ -127,6 +148,9 @@
             <child>
               <object class="GtkFileChooserButton" id="filechooserbutton1">
                 <property name="visible">True</property>
+                <property name="homogeneous">True</property>
+                <property name="create_folders">False</property>
+                <property name="width_chars">15</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -147,7 +171,8 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="invisible_char">&#x25CF;</property>
-                <property name="text" translatable="yes">Entrez une URL</property>
+                <property name="width_chars">35</property>
+                <property name="caps_lock_warning">False</property>
               </object>
               <packing>
                 <property name="position">3</property>
@@ -329,5 +354,9 @@
         </child>
       </object>
     </child>
+  </object>
+  <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="stock">gtk-missing-image</property>
   </object>
 </interface>
