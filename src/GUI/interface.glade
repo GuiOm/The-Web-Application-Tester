@@ -92,6 +92,15 @@
                         <signal name="activate" handler="on_imagemenuitem6_activate"/>
                       </object>
                     </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="imagemenuitem7">
+                        <property name="label">Supprimer les rapports</property>
+                        <property name="visible">True</property>
+                        <property name="image">image2</property>
+                        <property name="use_stock">False</property>
+                        <signal name="activate" handler="on_imagemenuitem7_activate"/>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -356,6 +365,10 @@
     </child>
   </object>
   <object class="GtkImage" id="image1">
+    <property name="visible">True</property>
+    <property name="stock">gtk-missing-image</property>
+  </object>
+  <object class="GtkImage" id="image2">
     <property name="visible">True</property>
     <property name="stock">gtk-missing-image</property>
   </object>

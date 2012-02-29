@@ -14,7 +14,7 @@ class Whitebox:
 		match = re.search("echo \$_SERVER\['PHP_SELF'\]", line)
 		
 		if(match != None):
-			self.report.addVulnerability("XSS", str(nbLine), "xss de type reflected, dû à une mauvaise utilisation de $_SERVER['PHP_SELF']")
+			self.report.addVulnerabilityWhiteBox("XSS", str(nbLine), "xss de type reflected, dû à une mauvaise utilisation de $_SERVER['PHP_SELF']")
 		
 	#Fonction principale qui lance l'attaque en whitebox
 	def attack(self):

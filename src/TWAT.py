@@ -6,15 +6,15 @@ from GUI.FenetrePrincipale import *
 from attack.BlackBox.Blackbox import *
 from attack.WhiteBox.Whitebox import *
 
-class TWAT:
-	authorizedExtension = ("php", "php3")
-	options = []
-	url = ""
-	fichier = ""
-	ping = True
-	
+class TWAT:	
 	def __init__(self, fenetre):
 		self.fenetre = fenetre
+		self.authorizedExtension = ("php", "php3")
+		self.options = []
+		self.url = ""
+		self.fichier = ""
+		self.ping = True
+		self.dirReport = "Rapports"
 	
 	#Reformate l'URL passée en paramètre -> si URL du type http://www.site.com ou http://site.com on ressort www.site.com
 	def reformateURL(self, url):
@@ -61,24 +61,8 @@ class TWAT:
 		if(self.getExtensionFile(fichier) in self.authorizedExtension):
 			return True		
 		else:
-			return False
-		
-	#Fonction qui retourne les éléments passé en paramètres d'URL et retourne un dictionnaire qui les contient
-	def recupGET(self, url):
-
-		param = []
-		dictio = {}
-
-		if url.find("?") >= 0:
-			page = url.split('?')[0]
-			query = url.split('?')[1]
-			params = query.split('&')
-		if query.find("=") >= 0:
-			for param in params:
-				dictio[param.split('=')[0]] = param.split('=')[1]
-			
-		return dictio		
-			
+			return False		
+	
 	#Récupère le ou les formulaires présents dans la page
 	def recupPOST(self, url):
 		pass
@@ -92,8 +76,14 @@ class TWAT:
 	#Fonction pour activer ou non le ping de test
 	def setTestPing(self, boolean):
 		self.ping = boolean
-	
 		
+	#Fonction pour supprimer les rapports générés
+	def removeReports(self):
+		for f in os.walk(self.dirReport+os.sep):
+			for fileName in f[2]:
+				if(fileName.find(".log") != -1):
+					os.remove(self.dirReport+os.sep+fileName)
+
 	#Lancement de l'attaque
 	def attack(self):
 		continu = True
@@ -117,7 +107,7 @@ class TWAT:
 					self.fenetre.setMessage("URL accessible")
 					continu = True
 					
-			if(continu == True):
+			if(continu == True):				
 				self.checkOptions(self.options)
 				blackbox = Blackbox(url, self.options, site)
 				blackbox.attack()

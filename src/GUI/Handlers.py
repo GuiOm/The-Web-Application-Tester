@@ -27,3 +27,7 @@ class Handlers():
 		else:
 			self.twat.ping = True
 			imagemenuitem6.set_label("Désactiver test ping")
+			
+	#Action pour supprimer tous les rapports générés par l'outil
+	def on_imagemenuitem7_activate(self, imagemenuitem7):
+		self.twat.removeReports()

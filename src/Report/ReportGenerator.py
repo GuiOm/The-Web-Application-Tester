@@ -7,22 +7,28 @@ class ReportGenerator:
 	def __init__(self, name):
 		self.name = name		
 		nbFile = 1
+		self.dirReport = "Rapports"
 		
-		for f in os.walk("Rapports"+os.sep): 
+		for f in os.walk(self.dirReport+os.sep): 
 			nbFile += len(f[2])
 		
 		#Chemin du rapport
-		#self.fileName = "Rapports"+os.sep+str(nbFile)+"-"+str(int(time.time()))+".log"
-		self.fileName = "Rapports"+os.sep+str(nbFile)+"-"+self.name+".log"
+		#self.fileName = self.dirReport+os.sep+str(nbFile)+"-"+str(int(time.time()))+".log"
+		self.fileName = self.dirReport+os.sep+str(nbFile)+"-"+self.name+".log"
 		
 		#Crée le fichier dans lequel sera stocké le rapport
 		initFile = open(self.fileName, "w")
 		initFile.close()
 
 	#Ajoute une vulnérabilité au rapport
-	def addVulnerability(self, typeVulnerability, line, info):
+	def addVulnerabilityWhiteBox(self, typeVulnerability, line, info):
 		fileReport = open(self.fileName, "a")
 		fileReport.write("Faille "+typeVulnerability+" ligne "+line+" : "+info+"\n")
+		fileReport.close()
+		
+	def addVulnerabilityBlackBox(self, typeVulnerability, info):
+		fileReport = open(self.fileName, "a")
+		fileReport.write("Faille "+typeVulnerability+" : "+info+"\n")
 		fileReport.close()
 		
 	def openReport(self):
