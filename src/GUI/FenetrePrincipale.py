@@ -55,6 +55,9 @@ class FenetrePrincipale:
 	def getOptions(self):
 		options = []
 		
+		if(self.builder.get_object("checkbutton1").get_active()):
+			options = ["xss", "sqli", "lfi", "post"]
+		else:
 		if(self.builder.get_object("checkbutton2").get_active()):
 			options.append("xss")
 		elif(self.builder.get_object("checkbutton3").get_active()):
@@ -64,7 +67,7 @@ class FenetrePrincipale:
 		elif(self.builder.get_object("checkbutton5").get_active()):
 			options.append("post")
 		elif (self.builder.get_object("checkbutton1").get_active()):
-			options = ["xss", "sqli", "lfi", "post"]
+			
 			
 		return options
 		

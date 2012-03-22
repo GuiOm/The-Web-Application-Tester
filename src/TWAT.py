@@ -62,10 +62,6 @@ class TWAT:
 			return True		
 		else:
 			return False		
-	
-	#Récupère le ou les formulaires présents dans la page
-	def recupPOST(self, url):
-		pass
 		
 	def checkOptions(self, options):
 		if(options == []):

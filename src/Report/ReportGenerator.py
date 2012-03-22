@@ -13,7 +13,6 @@ class ReportGenerator:
 			nbFile += len(f[2])
 		
 		#Chemin du rapport
-		#self.fileName = self.dirReport+os.sep+str(nbFile)+"-"+str(int(time.time()))+".log"
 		self.fileName = self.dirReport+os.sep+str(nbFile)+"-"+self.name+".log"
 		
 		#Crée le fichier dans lequel sera stocké le rapport
@@ -23,12 +22,12 @@ class ReportGenerator:
 	#Ajoute une vulnérabilité au rapport
 	def addVulnerabilityWhiteBox(self, typeVulnerability, line, info):
 		fileReport = open(self.fileName, "a")
-		fileReport.write("Faille "+typeVulnerability+" ligne "+line+" : "+info+"\n")
+		fileReport.write(typeVulnerability+" ligne "+line+" : "+info+"\n")
 		fileReport.close()
 		
-	def addVulnerabilityBlackBox(self, typeVulnerability, info):
+	def addVulnerabilityBlackBox(self, typeVulnerability, methode, info):
 		fileReport = open(self.fileName, "a")
-		fileReport.write("Faille "+typeVulnerability+" : "+info+"\n")
+		fileReport.write(typeVulnerability+" - Methode "+methode+" - "+info+"\n")
 		fileReport.close()
 		
 	def openReport(self):
