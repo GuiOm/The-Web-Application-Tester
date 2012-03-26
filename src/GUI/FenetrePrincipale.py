@@ -58,16 +58,14 @@ class FenetrePrincipale:
 		if(self.builder.get_object("checkbutton1").get_active()):
 			options = ["xss", "sqli", "lfi", "post"]
 		else:
-		if(self.builder.get_object("checkbutton2").get_active()):
-			options.append("xss")
-		elif(self.builder.get_object("checkbutton3").get_active()):
-			options.append("sqli")
-		elif(self.builder.get_object("checkbutton4").get_active()):
-			options.append("lfi")
-		elif(self.builder.get_object("checkbutton5").get_active()):
-			options.append("post")
-		elif (self.builder.get_object("checkbutton1").get_active()):
-			
+			if(self.builder.get_object("checkbutton2").get_active()):
+				options.append("xss")
+			if(self.builder.get_object("checkbutton3").get_active()):
+				options.append("sqli")
+			if(self.builder.get_object("checkbutton4").get_active()):
+				options.append("lfi")
+			if(self.builder.get_object("checkbutton5").get_active()):
+				options.append("post")
 			
 		return options
 		

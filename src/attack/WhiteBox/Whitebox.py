@@ -5,9 +5,9 @@ import re,os
 from Report.ReportGenerator import ReportGenerator
 
 class Whitebox:
-	def __init__(self, fileName, options):
+	def __init__(self, fileName, options, report):
 		self.fileName = fileName
-		self.report = ReportGenerator(fileName.split(os.sep)[-1])
+		self.report = report
 		self.options = options
 		
 	def xss(self, line, nbLine):

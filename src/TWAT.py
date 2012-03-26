@@ -5,6 +5,7 @@ import os,sys,re
 from GUI.FenetrePrincipale import *
 from attack.BlackBox.Blackbox import *
 from attack.WhiteBox.Whitebox import *
+from Report.ReportGenerator import ReportGenerator
 
 class TWAT:	
 	def __init__(self, fenetre):
@@ -15,6 +16,7 @@ class TWAT:
 		self.fichier = ""
 		self.ping = True
 		self.dirReport = "Rapports"
+		
 	
 	#Reformate l'URL passée en paramètre -> si URL du type http://www.site.com ou http://site.com on ressort www.site.com
 	def reformateURL(self, url):
@@ -63,11 +65,22 @@ class TWAT:
 		else:
 			return False		
 		
-	def checkOptions(self, options):
-		if(options == []):
-			self.fenetre.setMessage("Veuillez choisir au moins une option")
-		elif(options == ["post"]):
-			self.fenetre.setMessage("Veuillez choisir une option en plus de POST")
+	def checkOptions(self, options, typeTest):
+		if typeTest == "blackbox":
+			if(options == []):
+				self.fenetre.setMessage("Veuillez choisir au moins une option")
+				return False
+			elif(options == ["post"]):
+				self.fenetre.setMessage("Veuillez choisir une option en plus de POST")
+				return False
+			else:
+				return True
+		elif typeTest == "whitebox":
+			if(options == [] or options == ["post"]):
+				self.fenetre.setMessage("Veuillez choisir au moins un type de faille")
+				return False
+			else:
+				return True
 			
 	#Fonction pour activer ou non le ping de test
 	def setTestPing(self, boolean):
@@ -87,6 +100,7 @@ class TWAT:
 		url = self.fenetre.getURL()
 		fichier = self.fenetre.getPathToFile()
 		site = self.recupNomSite(url)
+		report = ReportGenerator(site)
 		
 		#Si une URL et un fichier sont entrés
 		if(url and fichier):
@@ -103,11 +117,12 @@ class TWAT:
 					self.fenetre.setMessage("URL accessible")
 					continu = True
 					
-			if(continu == True):				
-				self.checkOptions(self.options)
-				blackbox = Blackbox(url, self.options, site)
-				blackbox.attack()
-				self.fenetre.setMessage(blackbox.report.openReport())
+			if(continu == True):			
+				checkOptions = self.checkOptions(self.options, "blackbox")
+				if checkOptions == True:
+					blackbox = Blackbox(url, self.options, site, report)
+					blackbox.attack()
+					self.fenetre.setMessage(report.openReport())
 				
 		#Si un fichier est entré mais pas d'URL, on lance l'attaque en whitebox	
 		elif(fichier and not url):
@@ -116,10 +131,11 @@ class TWAT:
 				self.fenetre.setMessage("Type de fichier incorrect")
 			#Sinon, fichier supporté, on continue
 			else:
-				self.checkOptions(self.options)
-				whitebox = Whitebox(fichier, self.options)
-				whitebox.attack()
-				self.fenetre.setMessage(whitebox.report.openReport())
+				checkOptions = self.checkOptions(self.options, "whitebox")
+				if checkOptions == True:
+					whitebox = Whitebox(fichier, self.options, report)
+					whitebox.attack()
+					self.fenetre.setMessage(report.openReport())
 		else:
 			self.fenetre.setMessage("Vous devez entrer soit une url soit un fichier")
 		
