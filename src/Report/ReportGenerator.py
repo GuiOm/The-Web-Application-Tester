@@ -20,9 +20,9 @@ class ReportGenerator:
 		initFile.close()
 
 	#Ajoute une vulnérabilité au rapport
-	def addVulnerabilityWhiteBox(self, typeVulnerability, line, info):
+	def addVulnerabilityWhiteBox(self, level, typeVulnerability, line, info):
 		fileReport = open(self.fileName, "a")
-		fileReport.write(typeVulnerability+" ligne "+line+" : "+info+"\n")
+		fileReport.write(level+" - "+typeVulnerability+" ligne "+line+" : "+info+"\n")
 		fileReport.close()
 		
 	def addVulnerabilityBlackBox(self, typeVulnerability, methode, info):

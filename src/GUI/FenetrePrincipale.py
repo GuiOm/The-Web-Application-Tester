@@ -23,7 +23,7 @@ class FenetrePrincipale:
 		window.show_all()
 		
 		#Message de bienvenue
-		welcomeMessage = "Bienvenue dans The Web Application Tester\n\nPour utiliser cet outil vous avez le choix entre 2 modes :\n\n- Soit en entrant une URL (le test se fera alors en blackbox),\n- Soit en entrant un fichier (le test se fera en whitebox).\n\nChoisissez les différentes vulnérabilités que vous voulez tester en cochant les cases."
+		welcomeMessage = "Bienvenue dans The Web Application Tester\n\n[+] Pour utiliser cet outil vous avez le choix entre 2 modes :\n\t- Soit en entrant une URL (le test se fera alors en blackbox),\n\t- Soit en entrant un fichier (le test se fera en whitebox).\n\n[+] Choisissez les différentes vulnérabilités que vous voulez tester en cochant les cases.\n\n[+] Pour tester les paramètres GET en url, donnez leur la valeur TEST\n\tExemple : localhost/votre_site/index.php?page=TEST\n\n[+] Pour avoir un meilleur résultat, utilisez le fichier de configuration PHP fourni.\n\n[+] Pendant vos tests, pour repérer au mieux les injections SQL, affichez les erreurs des vos requêtes.\n\tPar exemple avec MySQL : $result = mysql_query($requete, $connexion) or die(mysql_error());\n\n[+] Pensez à retirer cet affichage des erreurs à la mise en production de vos pages web !"
 		self.setMessage(welcomeMessage)
 		
 		

@@ -330,12 +330,12 @@ class Xss(Blackbox):
 					payloads.append(payload + xss.replace("__XSS__", flag))
 					
 			elif element['type'] == "attrname":
-				if code == element['name']:
+				if flag == element['name']:
 					for xss in self.payloads:
 						payloads.append('>' + xss.replace("__XSS__",flag))
 
 			elif element['type'] == "tag":
-				if elem['value'].startswith(code):
+				if elem['value'].startswith(flag):
 					for xss in self.payloads:
 						payloads.append(xss.replace("__XSS__", flag)[1:])
 				else:
@@ -400,14 +400,14 @@ class Xss(Blackbox):
 		for payload in payloads:
 			payload = self.cleanPayload(payload)
 			if param == {}:
-				responseHtml = self.getHTML(url+"?"+urllib.quote(payload), None, None)
+				responseHtml = self.getHTML(url+urllib.quote(payload), None, None)
 			else:
 				param[var] = payload
 				
 				if typeRequete == "post":
 					responseHtml = self.getHTML(url, param, "post")
 				elif typeRequete == "get":
-					responseHtml = self.getHTML(url, param, "get")
+					responseHtml = self.getHTML(url, param, "get")					
 			
 			if self.validXSS(responseHtml, flag):
 				if param == {}:

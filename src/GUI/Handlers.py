@@ -19,6 +19,14 @@ class Handlers():
 	def on_button1_clicked(self, button1):
 		self.twat.attack()
 		
+	#Menu / Nouveau -> Réinitialisation de la fenetre
+	def on_imagemenuitem1_activate(self, imagemenuitem1):
+		self.fenetre.__init__()
+		
+	#Menu / Quitter le programme
+	def on_imagemenuitem5_activate(self, imagemenuitem5):
+		gtk.main_quit()
+		
 	#Action pour activer/désactiver le test ping dans les options
 	def on_imagemenuitem6_activate(self, imagemenuitem6):
 		if(self.twat.ping == True):

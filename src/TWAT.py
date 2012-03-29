@@ -99,8 +99,7 @@ class TWAT:
 		self.options = self.fenetre.getOptions()
 		url = self.fenetre.getURL()
 		fichier = self.fenetre.getPathToFile()
-		site = self.recupNomSite(url)
-		report = ReportGenerator(site)
+		site = self.recupNomSite(url)		
 		
 		#Si une URL et un fichier sont entrés
 		if(url and fichier):
@@ -120,6 +119,8 @@ class TWAT:
 			if(continu == True):			
 				checkOptions = self.checkOptions(self.options, "blackbox")
 				if checkOptions == True:
+					#Création du rapport
+					report = ReportGenerator(site)
 					blackbox = Blackbox(url, self.options, site, report)
 					blackbox.attack()
 					self.fenetre.setMessage(report.openReport())
@@ -133,6 +134,8 @@ class TWAT:
 			else:
 				checkOptions = self.checkOptions(self.options, "whitebox")
 				if checkOptions == True:
+					#Création du rapport
+					report = ReportGenerator(self.getFileName(fichier))
 					whitebox = Whitebox(fichier, self.options, report)
 					whitebox.attack()
 					self.fenetre.setMessage(report.openReport())
