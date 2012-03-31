@@ -7,7 +7,7 @@
 ######################################################################
 
 import os, urllib, urllib2, re, random
-import BeautifulSoup
+from lib import BeautifulSoup
 from Report.ReportGenerator import ReportGenerator
 
 class Blackbox:
@@ -424,9 +424,9 @@ class Xss(Blackbox):
 				param[var] = payload
 				
 				if typeRequete == "post":
-					responseHtml = urllib2.urlopen(url, param)
+					responseHtml = self.getHTML(url, param, "post")
 				elif typeRequete == "get":
-					responseHtml = urllib2.urlopen(url, param)
+					responseHtml = self.getHTML(url, param, "get")
 			
 			if self.validXSS(responseHtml, flag):
 				if param == {}:
