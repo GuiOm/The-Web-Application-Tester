@@ -6,7 +6,7 @@ import os,sys,time
 class ReportGenerator:
 	def __init__(self, name):
 		self.name = name		
-		nbFile = 1
+		nbFile = 0
 		self.dirReport = "Rapports"
 		
 		for f in os.walk(self.dirReport+os.sep): 
