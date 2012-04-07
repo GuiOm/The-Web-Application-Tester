@@ -273,12 +273,12 @@ class Xss(Blackbox):
 					
 		#Si il y a des paramètres GET
 		else:
-			for key in get:
+			for key, value in get.items():
 				#On fait une copie du dictionnaire contenant les informations GET pour le garder intact
 				data = get.copy()
 				if value == "TEST":					
 					flag = self.generateFlag()
-					data[param] = flag				
+					data[key] = flag				
 					response = self.getHTML(url, data, "get")
 				
 					if flag in response:
